@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de Repositórios GitHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Criador de Repositórios GitHub</h1>
+        <div class="card">
+            <div id="loginSection">
+                <h2>Login com GitHub</h2>
+                <div>
+                    <label for="token">Token de Acesso Pessoal do GitHub:</label>
+                    <input type="password" id="token" placeholder="digite seu token aqui">
+                    <p><small>Você pode criar um token em: <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">GitHub Settings &gt; Developer Settings &gt; Personal access tokens</a></small></p>
+                    <p><small>Certifique-se de incluir as permissões: <code>repo</code> e <code>user</code></small></p>
+                    <button id="loginBtn">Conectar</button>
+                    <div id="loginMessage"></div>
+                </div>
+            </div>
+            <div id="mainSection" class="hidden">
+                <div class="tabs">
+                    <div class="tab active" data-tab="create">Criar Repositório</div>
+                    <div class="tab" data-tab="list">Listar Repositórios</div>
+                </div>
+                <div id="createRepoSection" class="tab-content">
+                    <h2>Criar Novo Repositório</h2>
+                    <form id="repoForm">
+                        <div>
+                            <label for="repoName">Nome do Repositório:</label>
+                            <input type="text" id="repoName" required placeholder="meu-projeto-incrivel">
+                        </div>
+                        <div>
+                            <label for="repoDesc">Descrição:</label>
+                            <textarea id="repoDesc" rows="3" placeholder="Uma descrição breve do seu projeto"></textarea>
+                        </div>
+                        <div>
+                            <label for="repoVisibility">Visibilidade:</label>
+                            <select id="repoVisibility">
+                                <option value="public">Público</option>
+                                <option value="private">Privado</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" id="initReadme" checked>
+                                Inicializar com README
+                            </label>
+                        </div>
+                        <div>
+                            <label for="licenseTemplate">Licença:</label>
+                            <select id="licenseTemplate">
+                                <option value="">Nenhuma</option>
+                                <option value="mit" selected>MIT</option>
+                                <option value="apache-2.0">Apache License 2.0</option>
+                                <option value="gpl-3.0">GNU GPL v3</option>
+                            </select>
+                        </div>
+                        <button type="submit">Criar Repositório</button>
+                    </form>
+                    <div id="createMessage"></div>
+                </div>
+                <div id="listRepoSection" class="tab-content hidden">
+                    <h2>Seus Repositórios</h2>
+                    <button id="refreshReposBtn">Atualizar Lista</button>
+                    <div id="repoList" class="repo-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
